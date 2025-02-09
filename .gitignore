@@ -2,18 +2,13 @@
 **/__pycache__/
 
 # Development folders
-# archived/
-# backups/
-# tests/
+archived/
+backups/
+tests/
 
 # Log files
-# logs/
+logs/
 
 # Build outputs
-# build/
-# dist/
-
-# Misc
-
-
-# have to comment out so git actually pushes them to remote.
+build/
+dist/
