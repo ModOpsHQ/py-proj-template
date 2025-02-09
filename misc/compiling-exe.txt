@@ -1,0 +1,14 @@
+# Compile all python files
+py -m compileall .
+
+# Build exe (via .spec file)
+pyinstaller exe.spec --clean -y
+
+# Run both commands (only executes second one with first one succeeds)
+py -m compileall . ; pyinstaller exe.spec --clean -y
+
+# ; is a command separator in powershell
+# && is a command separator in cmd
+
+# NOTE: when issues in program, run exe via cmd-prompt to view output
+"repo_root_dir\dist\folder_name\exe_name.exe"

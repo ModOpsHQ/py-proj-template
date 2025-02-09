@@ -1,0 +1,14 @@
+{
+    // See https://go.microsoft.com/fwlink/?LinkId=733558
+    // for the documentation about the tasks.json format
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "Run MyPy",
+            "type": "shell",
+            "command": "mypy",
+            "problemMatcher": [],
+            "detail": "Run MyPy before executing the Python script"
+        }
+    ]
+}
