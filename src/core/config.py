@@ -11,7 +11,7 @@ import sys
 #     Set Current Working Dir
 # ====================================*/
 
-CWD = None
+CWD: str
 if getattr(sys, 'frozen', False):
     CWD = os.path.join(os.path.dirname(sys.executable), '_internal')
 else:
