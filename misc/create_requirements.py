@@ -3,6 +3,19 @@ import ast
 
 # pip install -r requirements.txt
 
+# Manual includes - development and build tools that may not be detected
+MANUAL_INCLUDES = {
+    'mypy',           # Type checking
+    'pyinstaller',    # Building executables
+}
+
+# Map module names to their corresponding package names
+MODULE_TO_PACKAGE_MAP = {
+    'win32com': 'pywin32',
+    'win32gui': 'pywin32',
+    # Add more mappings as needed
+}
+
 BUILTIN_MODULES = {
     'argparse', 'ast', 'asyncio', 'json', 'logging', 
     'os', 'sys', 'typing', 're', 'math', 'datetime', 
@@ -18,14 +31,8 @@ BUILTIN_MODULES = {
 # Modules to ignore completely (not built-in and not to be included in requirements)
 IGNORES = {
     'components', 'core', 'models',
-    'singletons', 'utils'
-}
-
-# Map module names to their corresponding package names
-MODULE_TO_PACKAGE_MAP = {
-    'win32com': 'pywin32',
-    'win32gui': 'pywin32',
-    # Add more mappings as needed
+    'routes', 'singletons', 'templates',
+    'utils'
 }
 
 BUILTIN_MODULES.update(IGNORES)
@@ -98,6 +105,12 @@ def main(print_imports=False):
         # Then process regular third-party imports
         for imp in third_party_imports:
             if imp not in MODULE_TO_PACKAGE_MAP and imp not in added_packages:
+                f.write(f"{imp}\n")
+                added_packages.add(imp)
+        
+        # Add manual includes
+        for imp in MANUAL_INCLUDES:
+            if imp not in added_packages:
                 f.write(f"{imp}\n")
                 added_packages.add(imp)
     
