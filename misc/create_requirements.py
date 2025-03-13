@@ -7,6 +7,17 @@ import ast
 MANUAL_INCLUDES = {
     'mypy',           # Type checking
     'pyinstaller',    # Building executables
+    'aiomysql',       # MySQL database
+    'redis',          # Redis
+    'colorlog',       # Logging
+    'PySide6',
+    'aiohttp',
+    'fastapi',
+    'jwt',
+    'requests',
+    'starlette',
+    'uvicorn',
+    'jinja2'
 }
 
 # Map module names to their corresponding package names
@@ -32,7 +43,7 @@ BUILTIN_MODULES = {
 IGNORES = {
     'components', 'core', 'models',
     'routes', 'singletons', 'templates',
-    'utils'
+    'utils', 'src'
 }
 
 BUILTIN_MODULES.update(IGNORES)

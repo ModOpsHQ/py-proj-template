@@ -5,8 +5,8 @@ import sys
 
 block_cipher = None
 
-# Add the src directory to the Python path
-sys.path.insert(0, os.path.abspath('src'))
+# Add the root directory to the Python path
+sys.path.insert(0, os.path.abspath('.'))
 
 def get_pycache_files(directory):
     pycache_files = []
@@ -29,19 +29,17 @@ def collect_submodules(directory):
                 module_path = os.path.join(root, file)
                 rel_path = os.path.relpath(module_path, directory)
                 module_name = rel_path.replace(os.path.sep, '.')[:-3]  # Remove .py
-                hidden_imports.append(f'src.{module_name}')
+                hidden_imports.append(module_name)
     return hidden_imports
 
 a = Analysis(
     ['main.py'],  # Main script
-    pathex=[os.path.abspath('src')],
+    pathex=[os.path.abspath('.')],
     binaries=[],
-    datas=get_pycache_files('src') + [
-        ('src/resources/icons', 'resources/icons'),
-        ('src/resources/images', 'resources/images'),
-        ('src/resources/json', 'resources/json')
+    datas=[
+        ('resources', 'resources')
     ],
-    hiddenimports=collect_submodules('src') + [],
+    hiddenimports=collect_submodules('.') + ['aiomysql'],
     hookspath=[],
     hooksconfig={},
     runtime_hooks=[],
@@ -59,13 +57,13 @@ exe = EXE(
     a.scripts,
     [],
     exclude_binaries=True,
-    name='*RenameMe-ExeName*',
+    name='Subsystem-Service-MySQL',
     debug=False,
     bootloader_ignore_signals=False,
     strip=False,
     upx=True,
     console=True,
-    icon='src/resources/icons/logo2-transparent.png',
+    icon='',
     uac_admin=False  # This enables running as administrator
 )
 
@@ -77,5 +75,5 @@ coll = COLLECT(
     strip=False,
     upx=True,
     upx_exclude=[],
-    name='*RenameMe-FolderName*'
+    name='Subsystem-Service-MySQL'
 )
