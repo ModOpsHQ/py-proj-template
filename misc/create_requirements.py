@@ -41,9 +41,9 @@ BUILTIN_MODULES = {
 
 # Modules to ignore completely (not built-in and not to be included in requirements)
 IGNORES = {
-    'components', 'core', 'models',
-    'routes', 'singletons', 'templates',
-    'utils', 'src'
+    'components', 'core', 'events', 
+    'models', 'routes', 'singletons',
+    'templates', 'utils', 'src', 'tasks'
 }
 
 BUILTIN_MODULES.update(IGNORES)
