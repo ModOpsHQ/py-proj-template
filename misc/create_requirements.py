@@ -17,7 +17,8 @@ MANUAL_INCLUDES = {
     'requests',
     'starlette',
     'uvicorn',
-    'jinja2'
+    'jinja2',
+    'textwrap'
 }
 
 # Map module names to their corresponding package names
@@ -41,9 +42,9 @@ BUILTIN_MODULES = {
 
 # Modules to ignore completely (not built-in and not to be included in requirements)
 IGNORES = {
-    'components', 'core', 'events', 
-    'models', 'routes', 'singletons',
-    'templates', 'utils', 'src', 'tasks'
+    'cogs', 'components', 'core', 'events', 
+    'models', 'resources', 'routes', 'singletons',
+    'tasks', 'templates', 'tests', 'ui', 'utils'
 }
 
 BUILTIN_MODULES.update(IGNORES)
